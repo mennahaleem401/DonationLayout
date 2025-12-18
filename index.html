@@ -1,9 +1,9 @@
-<!doctype html>
+<!doctype block>
 <html lang="en">
  <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Donation Landing Page - Make a Difference</title>
+  <title>Donation Page - Hope Foundation</title>
   <script src="/_sdk/element_sdk.js"></script>
   <style>
     /* CSS Reset and Base Styles */
@@ -23,293 +23,156 @@
     }
 
     body {
-      font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       line-height: 1.6;
-      color: #2c3e50;
-      background: #fafbfc;
+      color: #2d3748;
+      background: #f7fafc;
     }
 
-    /* Main Wrapper */
-    .page-wrapper {
+    /* Main Container */
+    .main-wrapper {
       width: 100%;
       height: 100%;
       overflow-auto;
     }
 
-    /* Hero Section */
-    .hero-section {
-      background: linear-gradient(135deg, #e3f2fd 0%, #fff8e1 100%);
-      padding: 4rem 2rem;
-      min-height: 500px;
+    /* Header Section */
+    .header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1.5rem 2rem;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     }
 
-    .hero-container {
+    .header-content {
       max-width: 1200px;
       margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
+      display: flex;
+      justify-content: space-between;
       align-items: center;
+    }
+
+    .logo {
+      font-size: 1.75rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+
+    .trust-badge {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      opacity: 0.95;
+    }
+
+    .lock-icon {
+      width: 18px;
+      height: 18px;
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 4rem 2rem;
+      text-align: center;
     }
 
     .hero-content {
-      z-index: 10;
-    }
-
-    .hero-title {
-      font-size: 3.5rem;
-      font-weight: 800;
-      color: #1e88e5;
-      margin-bottom: 1rem;
-      line-height: 1.2;
-    }
-
-    .hero-subtitle {
-      font-size: 1.5rem;
-      color: #ff9800;
-      font-weight: 600;
-      margin-bottom: 1.5rem;
-    }
-
-    .hero-description {
-      font-size: 1.15rem;
-      color: #546e7a;
-      margin-bottom: 2rem;
-      line-height: 1.8;
-    }
-
-    .hero-button {
-      display: inline-block;
-      padding: 1rem 2.5rem;
-      background: linear-gradient(135deg, #ff9800 0%, #ff6f00 100%);
-      color: white;
-      text-decoration: none;
-      border-radius: 50px;
-      font-size: 1.2rem;
-      font-weight: 700;
-      box-shadow: 0 8px 20px rgba(255, 152, 0, 0.3);
-      transition: all 0.3s ease;
-      border: none;
-      cursor: pointer;
-    }
-
-    .hero-button:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 12px 28px rgba(255, 152, 0, 0.4);
-    }
-
-    /* Flat Illustration - Hero */
-    .hero-illustration {
-      position: relative;
-      height: 400px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .illustration-person {
-      width: 180px;
-      height: 280px;
-      background: #1e88e5;
-      border-radius: 100px 100px 20px 20px;
-      position: relative;
-      animation: float 3s ease-in-out infinite;
-    }
-
-    .person-head {
-      width: 100px;
-      height: 100px;
-      background: #ffcc80;
-      border-radius: 50%;
-      position: absolute;
-      top: -40px;
-      left: 50%;
-      transform: translateX(-50%);
-      border: 6px solid #1e88e5;
-    }
-
-    .person-face {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
-
-    .eye {
-      width: 8px;
-      height: 8px;
-      background: #2c3e50;
-      border-radius: 50%;
-      display: inline-block;
-      margin: 0 8px;
-    }
-
-    .eyes-container {
-      display: flex;
-      justify-content: center;
-      gap: 8px;
-      margin-bottom: 10px;
-    }
-
-    .smile {
-      width: 35px;
-      height: 15px;
-      border: 3px solid #2c3e50;
-      border-top: none;
-      border-radius: 0 0 20px 20px;
-      margin-top: 10px;
-      margin-left: 8px;
-    }
-
-    .donation-box {
-      width: 120px;
-      height: 100px;
-      background: #ff9800;
-      border-radius: 15px;
-      position: absolute;
-      right: -20px;
-      bottom: 50px;
-      box-shadow: 0 8px 20px rgba(255, 152, 0, 0.3);
-    }
-
-    .box-slot {
-      width: 70px;
-      height: 8px;
-      background: #f57c00;
-      margin: 15px auto;
-      border-radius: 4px;
-    }
-
-    .heart-icon {
-      font-size: 3rem;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      animation: heartbeat 1.5s ease-in-out infinite;
-    }
-
-    .coin {
-      width: 40px;
-      height: 40px;
-      background: #ffd54f;
-      border-radius: 50%;
-      position: absolute;
-      box-shadow: 0 4px 10px rgba(255, 213, 79, 0.5);
-      animation: coinDrop 2s ease-in-out infinite;
-    }
-
-    .coin-1 {
-      top: 20px;
-      right: 80px;
-      animation-delay: 0s;
-    }
-
-    .coin-2 {
-      top: 60px;
-      right: 120px;
-      animation-delay: 0.5s;
-    }
-
-    .coin-inner {
-      width: 25px;
-      height: 25px;
-      background: #ffeb3b;
-      border-radius: 50%;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
-
-    /* Animations */
-    @keyframes float {
-      0%, 100% {
-        transform: translateY(0);
-      }
-      50% {
-        transform: translateY(-20px);
-      }
-    }
-
-    @keyframes heartbeat {
-      0%, 100% {
-        transform: translate(-50%, -50%) scale(1);
-      }
-      50% {
-        transform: translate(-50%, -50%) scale(1.1);
-      }
-    }
-
-    @keyframes coinDrop {
-      0% {
-        transform: translateY(0) rotate(0deg);
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(200px) rotate(360deg);
-        opacity: 0;
-      }
-    }
-
-    /* Donation Section */
-    .donation-section {
-      padding: 4rem 2rem;
-      background: white;
-    }
-
-    .donation-container {
       max-width: 800px;
       margin: 0 auto;
     }
 
-    .section-header {
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+
+    .hero p {
+      font-size: 1.25rem;
+      opacity: 0.95;
+      margin-bottom: 2rem;
+    }
+
+    /* Impact Section */
+    .impact-section {
+      background: white;
+      padding: 3rem 2rem;
+      margin: -2rem auto 0;
+      max-width: 1100px;
+      border-radius: 12px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+      position: relative;
+      z-index: 10;
+    }
+
+    .impact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .impact-card {
+      text-align: center;
+      padding: 1.5rem;
+      background: #f7fafc;
+      border-radius: 8px;
+      transition: transform 0.3s ease;
+    }
+
+    .impact-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .impact-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .impact-number {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #667eea;
+      margin-bottom: 0.5rem;
+    }
+
+    .impact-label {
+      font-size: 0.95rem;
+      color: #718096;
+    }
+
+    /* Progress Section */
+    .progress-section {
       text-align: center;
       margin-bottom: 3rem;
     }
 
-    .section-title {
-      font-size: 2.5rem;
+    .progress-title {
+      font-size: 1.5rem;
       font-weight: 700;
-      color: #1e88e5;
       margin-bottom: 1rem;
+      color: #2d3748;
     }
 
-    .section-description {
-      font-size: 1.1rem;
-      color: #546e7a;
-    }
-
-    /* Progress Section */
-    .progress-wrapper {
-      background: #f5f9fc;
-      padding: 2rem;
+    .progress-bar-container {
+      width: 100%;
+      height: 40px;
+      background: #e2e8f0;
       border-radius: 20px;
-      margin-bottom: 3rem;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-    }
-
-    .progress-header {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 1rem;
-      font-size: 1.1rem;
-      font-weight: 600;
-      color: #2c3e50;
-    }
-
-    .progress-bar-bg {
-      height: 30px;
-      background: #e1f5fe;
-      border-radius: 15px;
       overflow: hidden;
       position: relative;
+      margin-bottom: 1rem;
+      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
     }
 
     .progress-bar-fill {
       height: 100%;
-      background: linear-gradient(90deg, #1e88e5 0%, #42a5f5 100%);
-      border-radius: 15px;
+      background: linear-gradient(90deg, #48bb78 0%, #38a169 100%);
+      border-radius: 20px;
       transition: width 1.5s ease-out;
       display: flex;
       align-items: center;
@@ -317,48 +180,99 @@
       padding-right: 1rem;
       color: white;
       font-weight: 700;
-      font-size: 0.9rem;
+      font-size: 1rem;
     }
 
     .progress-stats {
       display: flex;
       justify-content: space-between;
-      margin-top: 1rem;
       font-size: 0.95rem;
-      color: #546e7a;
+      color: #718096;
     }
 
-    /* Donation Form */
-    .donation-form {
-      background: #ffffff;
-      padding: 2.5rem;
-      border-radius: 20px;
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
-      border: 2px solid #e3f2fd;
+    /* Donation Form Section */
+    .donation-section {
+      max-width: 1100px;
+      margin: 3rem auto;
+      padding: 0 2rem 3rem;
+    }
+
+    .form-container {
+      background: white;
+      padding: 3rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    .form-header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .form-header h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #2d3748;
+      margin-bottom: 0.5rem;
     }
 
     .security-badge {
-      display: flex;
+      display: inline-flex;
       align-items: center;
-      justify-content: center;
       gap: 0.5rem;
-      background: #e8f5e9;
-      color: #4caf50;
-      padding: 0.75rem 1.5rem;
-      border-radius: 50px;
-      font-size: 0.95rem;
+      background: #f0fff4;
+      color: #38a169;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
       font-weight: 600;
+      margin-top: 1rem;
+    }
+
+    /* Amount Selection */
+    .amount-section {
       margin-bottom: 2rem;
-      width: fit-content;
-      margin-left: auto;
-      margin-right: auto;
     }
 
-    .lock-icon {
-      width: 16px;
-      height: 16px;
+    .section-label {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #2d3748;
+      margin-bottom: 1rem;
+      display: block;
     }
 
+    .amount-buttons {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .amount-btn {
+      padding: 1rem;
+      border: 2px solid #e2e8f0;
+      background: white;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #4a5568;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .amount-btn:hover {
+      border-color: #667eea;
+      background: #f7fafc;
+    }
+
+    .amount-btn.active {
+      border-color: #667eea;
+      background: #667eea;
+      color: white;
+    }
+
+    /* Form Fields */
     .form-group {
       margin-bottom: 1.5rem;
     }
@@ -367,34 +281,32 @@
       display: block;
       font-size: 0.95rem;
       font-weight: 600;
-      color: #2c3e50;
+      color: #2d3748;
       margin-bottom: 0.5rem;
     }
 
     .form-input {
       width: 100%;
-      padding: 0.9rem 1.2rem;
-      border: 2px solid #e1f5fe;
-      border-radius: 12px;
+      padding: 0.875rem 1rem;
+      border: 2px solid #e2e8f0;
+      border-radius: 8px;
       font-size: 1rem;
-      font-family: inherit;
       transition: all 0.3s ease;
-      background: #fafbfc;
+      font-family: inherit;
     }
 
     .form-input:focus {
       outline: none;
-      border-color: #1e88e5;
-      background: white;
-      box-shadow: 0 0 0 4px rgba(30, 136, 229, 0.1);
+      border-color: #667eea;
+      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
     }
 
     .form-input.error {
-      border-color: #ef5350;
+      border-color: #f56565;
     }
 
     .error-message {
-      color: #ef5350;
+      color: #f56565;
       font-size: 0.85rem;
       margin-top: 0.5rem;
       display: none;
@@ -404,78 +316,55 @@
       display: block;
     }
 
-    /* Amount Selection */
-    .amount-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1rem;
-      margin-bottom: 1rem;
-    }
-
-    .amount-option {
-      padding: 1rem;
-      border: 2px solid #e1f5fe;
-      background: #fafbfc;
-      border-radius: 12px;
-      text-align: center;
-      font-size: 1.2rem;
-      font-weight: 700;
-      color: #1e88e5;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    .amount-option:hover {
-      border-color: #1e88e5;
-      background: #e3f2fd;
-    }
-
-    .amount-option.active {
-      border-color: #1e88e5;
-      background: #1e88e5;
-      color: white;
-    }
-
-    .submit-button {
+    /* Submit Button */
+    .submit-btn {
       width: 100%;
-      padding: 1.2rem;
-      background: linear-gradient(135deg, #ff9800 0%, #ff6f00 100%);
+      padding: 1.25rem;
+      background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
       color: white;
       border: none;
-      border-radius: 50px;
+      border-radius: 8px;
       font-size: 1.2rem;
       font-weight: 700;
       cursor: pointer;
       transition: all 0.3s ease;
-      box-shadow: 0 8px 20px rgba(255, 152, 0, 0.3);
-      margin-top: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-top: 2rem;
     }
 
-    .submit-button:hover {
+    .submit-btn:hover {
       transform: translateY(-2px);
-      box-shadow: 0 12px 28px rgba(255, 152, 0, 0.4);
+      box-shadow: 0 8px 20px rgba(72, 187, 120, 0.4);
     }
 
-    .submit-button:disabled {
+    .submit-btn:active {
+      transform: translateY(0);
+    }
+
+    .submit-btn:disabled {
       opacity: 0.6;
       cursor: not-allowed;
       transform: none;
     }
 
+    /* Privacy Note */
     .privacy-note {
       text-align: center;
       font-size: 0.85rem;
-      color: #78909c;
+      color: #718096;
       margin-top: 1.5rem;
-      line-height: 1.6;
+      line-height: 1.5;
     }
 
     /* Success Message */
     .success-message {
-      background: linear-gradient(135deg, #e8f5e9 0%, #f1f8e9 100%);
-      border: 2px solid #4caf50;
-      border-radius: 20px;
-      padding: 2rem;
+      background: #f0fff4;
+      border: 2px solid #48bb78;
+      border-radius: 8px;
+      padding: 1.5rem;
       text-align: center;
       display: none;
       margin-top: 2rem;
@@ -483,29 +372,24 @@
 
     .success-message.show {
       display: block;
-      animation: slideIn 0.4s ease;
-    }
-
-    .success-icon {
-      font-size: 4rem;
-      margin-bottom: 1rem;
+      animation: slideDown 0.3s ease;
     }
 
     .success-message h3 {
-      color: #4caf50;
-      font-size: 1.8rem;
+      color: #38a169;
+      font-size: 1.5rem;
       margin-bottom: 0.5rem;
     }
 
     .success-message p {
-      color: #546e7a;
-      font-size: 1.1rem;
+      color: #2d3748;
+      font-size: 1rem;
     }
 
-    @keyframes slideIn {
+    @keyframes slideDown {
       from {
         opacity: 0;
-        transform: translateY(-20px);
+        transform: translateY(-10px);
       }
       to {
         opacity: 1;
@@ -513,137 +397,47 @@
       }
     }
 
-    /* Impact Section */
-    .impact-section {
-      padding: 4rem 2rem;
-      background: linear-gradient(135deg, #fff8e1 0%, #ffe0b2 100%);
-    }
-
-    .impact-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      text-align: center;
-    }
-
-    .impact-title {
-      font-size: 2.5rem;
-      font-weight: 700;
-      color: #ff6f00;
-      margin-bottom: 1rem;
-    }
-
-    .impact-description {
-      font-size: 1.2rem;
-      color: #546e7a;
-      margin-bottom: 3rem;
-      max-width: 700px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .impact-cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-      margin-top: 3rem;
-    }
-
-    .impact-card {
-      background: white;
-      padding: 2rem;
-      border-radius: 20px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-      transition: transform 0.3s ease;
-    }
-
-    .impact-card:hover {
-      transform: translateY(-5px);
-    }
-
-    .impact-icon-wrapper {
-      font-size: 3.5rem;
-      margin-bottom: 1rem;
-    }
-
-    .impact-card h4 {
-      font-size: 1.3rem;
-      color: #1e88e5;
-      margin-bottom: 0.5rem;
-    }
-
-    .impact-card p {
-      font-size: 0.95rem;
-      color: #546e7a;
-      line-height: 1.6;
-    }
-
     /* Responsive Design */
-    @media (max-width: 968px) {
-      .hero-container {
-        grid-template-columns: 1fr;
-        gap: 2rem;
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2rem;
       }
 
-      .hero-illustration {
-        order: -1;
-        height: 300px;
+      .hero p {
+        font-size: 1rem;
       }
 
-      .illustration-person {
-        width: 150px;
-        height: 240px;
+      .impact-section {
+        padding: 2rem 1.5rem;
+        margin-top: -1rem;
       }
 
-      .person-head {
-        width: 80px;
-        height: 80px;
+      .form-container {
+        padding: 2rem 1.5rem;
       }
 
-      .donation-box {
-        width: 100px;
-        height: 80px;
-      }
-
-      .hero-title {
-        font-size: 2.5rem;
-      }
-
-      .hero-subtitle {
-        font-size: 1.2rem;
-      }
-
-      .amount-grid {
+      .amount-buttons {
         grid-template-columns: repeat(2, 1fr);
       }
+
+      .header-content {
+        flex-direction: column;
+        gap: 1rem;
+      }
     }
 
-    @media (max-width: 580px) {
-      .hero-title {
-        font-size: 2rem;
+    @media (max-width: 480px) {
+      .hero h1 {
+        font-size: 1.75rem;
       }
 
-      .hero-subtitle {
-        font-size: 1rem;
-      }
-
-      .hero-description {
-        font-size: 1rem;
-      }
-
-      .donation-form {
-        padding: 1.5rem;
-      }
-
-      .amount-grid {
+      .impact-grid {
         grid-template-columns: 1fr;
+        gap: 1rem;
       }
 
-      .section-title {
-        font-size: 2rem;
-      }
-
-      .impact-title {
-        font-size: 2rem;
+      .form-container {
+        padding: 1.5rem 1rem;
       }
     }
   </style>
@@ -652,139 +446,119 @@
   <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
  </head>
  <body>
-  <div class="page-wrapper"><!-- Hero Section -->
-   <section class="hero-section">
-    <div class="hero-container">
-     <div class="hero-content">
-      <h1 class="hero-title" id="hero-title">Donation Landing Page</h1>
-      <p class="hero-subtitle" id="hero-subtitle">Together We Can Make a Change</p>
-      <p class="hero-description" id="hero-description">Join thousands of supporters who are making a real difference in communities around the world. Your generosity brings hope and creates lasting impact.</p><a href="#donation-form" class="hero-button" id="hero-button">Donate Now</a>
-     </div><!-- Flat Illustration -->
-     <div class="hero-illustration">
-      <div class="illustration-person">
-       <div class="person-head">
-        <div class="person-face">
-         <div class="eyes-container"><span class="eye"></span> <span class="eye"></span>
-         </div>
-         <div class="smile"></div>
-        </div>
-       </div>
-      </div>
-      <div class="donation-box">
-       <div class="box-slot"></div>
-       <div class="heart-icon">
-        ❤️
-       </div>
-      </div>
-      <div class="coin coin-1">
-       <div class="coin-inner"></div>
-      </div>
-      <div class="coin coin-2">
-       <div class="coin-inner"></div>
-      </div>
+  <div class="main-wrapper"><!-- Header -->
+   <header class="header">
+    <div class="header-content">
+     <div class="logo" id="page-title">
+      Hope Foundation
+     </div>
+     <div class="trust-badge">
+      <svg class="lock-icon" fill="currentColor" viewbox="0 0 20 20"><path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />
+      </svg> Secure Donation
      </div>
     </div>
-   </section><!-- Donation Section -->
-   <section class="donation-section" id="donation-form">
-    <div class="donation-container">
-     <div class="section-header">
-      <h2 class="section-title" id="form-title">Make Your Donation</h2>
-      <p class="section-description">Every contribution counts and creates meaningful change</p>
-     </div><!-- Progress Bar -->
-     <div class="progress-wrapper">
-      <div class="progress-header"><span>Campaign Progress</span> <span><strong id="current-raised">$0</strong> raised</span>
-      </div>
-      <div class="progress-bar-bg">
-       <div class="progress-bar-fill" id="progress-fill"><span id="progress-percent">0%</span>
-       </div>
-      </div>
-      <div class="progress-stats"><span>Goal: <strong id="goal-amount">$100,000</strong></span> <span><strong id="donors-count">2,847</strong> supporters</span>
-      </div>
-     </div><!-- Donation Form -->
-     <form class="donation-form" id="donation-form-element">
-      <div class="security-badge">
-       <svg class="lock-icon" fill="currentColor" viewbox="0 0 20 20"><path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />
-       </svg> Secure Donation - SSL Encrypted
-      </div><!-- Amount Selection -->
-      <div class="form-group"><label class="form-label">Select Donation Amount</label>
-       <div class="amount-grid">
-        <div class="amount-option" data-amount="25">
-         $25
-        </div>
-        <div class="amount-option" data-amount="50">
-         $50
-        </div>
-        <div class="amount-option" data-amount="100">
-         $100
-        </div>
-        <div class="amount-option" data-amount="250">
-         $250
-        </div>
-       </div><input type="number" id="custom-amount" name="amount" class="form-input" placeholder="Or enter custom amount ($)" min="1" required> <span class="error-message" id="amount-error">Please enter a valid donation amount</span>
-      </div><!-- Name Field -->
-      <div class="form-group"><label class="form-label" for="donor-name">Full Name</label> <input type="text" id="donor-name" name="name" class="form-input" placeholder="John Doe" required> <span class="error-message" id="name-error">Please enter your full name</span>
-      </div><!-- Email Field -->
-      <div class="form-group"><label class="form-label" for="donor-email">Email Address</label> <input type="email" id="donor-email" name="email" class="form-input" placeholder="john@example.com" required> <span class="error-message" id="email-error">Please enter a valid email address</span>
-      </div><button type="submit" class="submit-button" id="submit-btn"> <span id="form-button">Complete Donation</span> </button>
-      <p class="privacy-note">🔒 Your information is safe and secure. We respect your privacy and will never share your personal details. All transactions are encrypted and protected.</p>
-     </form><!-- Success Message -->
-     <div class="success-message" id="success-msg">
-      <div class="success-icon">
-       🎉
-      </div>
-      <h3>Thank You for Your Generosity!</h3>
-      <p>Your donation will make a real difference in the lives of those we serve. You'll receive a confirmation email shortly.</p>
-     </div>
+   </header><!-- Hero Section -->
+   <section class="hero">
+    <div class="hero-content">
+     <h1 id="hero-heading">Make a Difference Today</h1>
+     <p id="hero-subheading">Your donation helps us provide clean water, education, and healthcare to communities in need around the world.</p>
     </div>
    </section><!-- Impact Section -->
    <section class="impact-section">
-    <div class="impact-container">
-     <h2 class="impact-title" id="impact-title">Your Impact Matters</h2>
-     <p class="impact-description" id="impact-description">Every donation creates real change in the lives of people who need it most. See how your generosity transforms communities and brings hope to families worldwide.</p>
-     <div class="impact-cards">
-      <div class="impact-card">
-       <div class="impact-icon-wrapper">
-        🏫
-       </div>
-       <h4>Education Access</h4>
-       <p>Provide school supplies, scholarships, and learning resources to children in underserved communities.</p>
+    <div class="impact-grid">
+     <div class="impact-card">
+      <div class="impact-icon">
+       💧
       </div>
-      <div class="impact-card">
-       <div class="impact-icon-wrapper">
-        💧
-       </div>
-       <h4>Clean Water</h4>
-       <p>Build wells and water filtration systems to provide safe drinking water to families in need.</p>
+      <div class="impact-number">
+       12,450
       </div>
-      <div class="impact-card">
-       <div class="impact-icon-wrapper">
-        🏥
-       </div>
-       <h4>Healthcare Support</h4>
-       <p>Fund medical clinics, essential medicines, and preventive care programs for vulnerable populations.</p>
+      <div class="impact-label">
+       People Served
       </div>
-      <div class="impact-card">
-       <div class="impact-icon-wrapper">
-        🍎
-       </div>
-       <h4>Food Security</h4>
-       <p>Deliver nutritious meals and support sustainable agriculture programs to fight hunger.</p>
+     </div>
+     <div class="impact-card">
+      <div class="impact-icon">
+       🏫
       </div>
+      <div class="impact-number">
+       48
+      </div>
+      <div class="impact-label">
+       Schools Built
+      </div>
+     </div>
+     <div class="impact-card">
+      <div class="impact-icon">
+       🏥
+      </div>
+      <div class="impact-number">
+       156
+      </div>
+      <div class="impact-label">
+       Medical Clinics
+      </div>
+     </div>
+     <div class="impact-card">
+      <div class="impact-icon">
+       🌍
+      </div>
+      <div class="impact-number">
+       23
+      </div>
+      <div class="impact-label">
+       Countries Reached
+      </div>
+     </div>
+    </div><!-- Progress Bar -->
+    <div class="progress-section">
+     <h3 class="progress-title" id="progress-title">Our Goal: $50,000</h3>
+     <div class="progress-bar-container">
+      <div class="progress-bar-fill" id="progressBar"><span id="progressPercent">0%</span>
+      </div>
+     </div>
+     <div class="progress-stats"><span><strong id="raisedAmount">$0</strong> raised</span> <span><strong id="goalAmount">$50,000</strong> goal</span>
+     </div>
+    </div>
+   </section><!-- Donation Form Section -->
+   <section class="donation-section">
+    <div class="form-container">
+     <div class="form-header">
+      <h2 id="form-title">Complete Your Donation</h2>
+      <div class="security-badge">
+       <svg width="16" height="16" fill="currentColor" viewbox="0 0 20 20"><path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+       </svg> 256-bit SSL Encrypted
+      </div>
+     </div>
+     <form id="donationForm"><!-- Amount Selection -->
+      <div class="amount-section"><label class="section-label" for="custom-amount">Select or Enter Amount</label>
+       <div class="amount-buttons"><button type="button" class="amount-btn" data-amount="25">$25</button> <button type="button" class="amount-btn" data-amount="50">$50</button> <button type="button" class="amount-btn" data-amount="100">$100</button> <button type="button" class="amount-btn" data-amount="250">$250</button>
+       </div><input type="number" id="custom-amount" name="amount" class="form-input" placeholder="Or enter custom amount" min="1" required> <span class="error-message" id="amountError">Please enter a valid donation amount</span>
+      </div><!-- Personal Information -->
+      <div class="form-group"><label class="form-label" for="name">Full Name</label> <input type="text" id="name" name="name" class="form-input" placeholder="John Doe" required> <span class="error-message" id="nameError">Please enter your full name</span>
+      </div>
+      <div class="form-group"><label class="form-label" for="email">Email Address</label> <input type="email" id="email" name="email" class="form-input" placeholder="john@example.com" required> <span class="error-message" id="emailError">Please enter a valid email address</span>
+      </div><!-- Submit Button --> <button type="submit" class="submit-btn" id="submitBtn"> <span id="button-text">Donate Now</span>
+       <svg width="20" height="20" fill="currentColor" viewbox="0 0 20 20"><path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd" />
+       </svg></button>
+      <p class="privacy-note">🔒 Your information is secure and will never be shared. We respect your privacy and are committed to protecting your personal data.</p>
+     </form><!-- Success Message -->
+     <div class="success-message" id="successMessage">
+      <h3>Thank You! 🎉</h3>
+      <p>Your generous donation will make a real difference in people's lives.</p>
      </div>
     </div>
    </section>
   </div>
   <script>
-    // Configuration for Element SDK
+    // Configuration object for edit panel integration
     const defaultConfig = {
-      hero_title: "Donation Landing Page",
-      hero_subtitle: "Together We Can Make a Change",
-      hero_description: "Join thousands of supporters who are making a real difference in communities around the world. Your generosity brings hope and creates lasting impact.",
-      hero_button: "Donate Now",
-      form_title: "Make Your Donation",
-      form_button: "Complete Donation",
-      impact_title: "Your Impact Matters",
-      impact_description: "Every donation creates real change in the lives of people who need it most. See how your generosity transforms communities and brings hope to families worldwide."
+      page_title: "Hope Foundation",
+      hero_heading: "Make a Difference Today",
+      hero_subheading: "Your donation helps us provide clean water, education, and healthcare to communities in need around the world.",
+      progress_title: "Our Goal: $50,000",
+      form_title: "Complete Your Donation",
+      button_text: "Donate Now"
     };
 
     // Initialize Element SDK
@@ -792,52 +566,40 @@
       window.elementSdk.init({
         defaultConfig: defaultConfig,
         onConfigChange: async (config) => {
-          // Update hero title
-          const heroTitleEl = document.getElementById('hero-title');
-          if (heroTitleEl) {
-            heroTitleEl.textContent = config.hero_title || defaultConfig.hero_title;
+          // Update page title
+          const pageTitleElement = document.getElementById('page-title');
+          if (pageTitleElement) {
+            pageTitleElement.textContent = config.page_title || defaultConfig.page_title;
           }
 
-          // Update hero subtitle
-          const heroSubtitleEl = document.getElementById('hero-subtitle');
-          if (heroSubtitleEl) {
-            heroSubtitleEl.textContent = config.hero_subtitle || defaultConfig.hero_subtitle;
+          // Update hero heading
+          const heroHeadingElement = document.getElementById('hero-heading');
+          if (heroHeadingElement) {
+            heroHeadingElement.textContent = config.hero_heading || defaultConfig.hero_heading;
           }
 
-          // Update hero description
-          const heroDescEl = document.getElementById('hero-description');
-          if (heroDescEl) {
-            heroDescEl.textContent = config.hero_description || defaultConfig.hero_description;
+          // Update hero subheading
+          const heroSubheadingElement = document.getElementById('hero-subheading');
+          if (heroSubheadingElement) {
+            heroSubheadingElement.textContent = config.hero_subheading || defaultConfig.hero_subheading;
           }
 
-          // Update hero button
-          const heroButtonEl = document.getElementById('hero-button');
-          if (heroButtonEl) {
-            heroButtonEl.textContent = config.hero_button || defaultConfig.hero_button;
+          // Update progress title
+          const progressTitleElement = document.getElementById('progress-title');
+          if (progressTitleElement) {
+            progressTitleElement.textContent = config.progress_title || defaultConfig.progress_title;
           }
 
           // Update form title
-          const formTitleEl = document.getElementById('form-title');
-          if (formTitleEl) {
-            formTitleEl.textContent = config.form_title || defaultConfig.form_title;
+          const formTitleElement = document.getElementById('form-title');
+          if (formTitleElement) {
+            formTitleElement.textContent = config.form_title || defaultConfig.form_title;
           }
 
-          // Update form button
-          const formButtonEl = document.getElementById('form-button');
-          if (formButtonEl) {
-            formButtonEl.textContent = config.form_button || defaultConfig.form_button;
-          }
-
-          // Update impact title
-          const impactTitleEl = document.getElementById('impact-title');
-          if (impactTitleEl) {
-            impactTitleEl.textContent = config.impact_title || defaultConfig.impact_title;
-          }
-
-          // Update impact description
-          const impactDescEl = document.getElementById('impact-description');
-          if (impactDescEl) {
-            impactDescEl.textContent = config.impact_description || defaultConfig.impact_description;
+          // Update button text
+          const buttonTextElement = document.getElementById('button-text');
+          if (buttonTextElement) {
+            buttonTextElement.textContent = config.button_text || defaultConfig.button_text;
           }
         },
         mapToCapabilities: (config) => ({
@@ -847,100 +609,100 @@
           fontSizeable: undefined
         }),
         mapToEditPanelValues: (config) => new Map([
-          ["hero_title", config.hero_title || defaultConfig.hero_title],
-          ["hero_subtitle", config.hero_subtitle || defaultConfig.hero_subtitle],
-          ["hero_description", config.hero_description || defaultConfig.hero_description],
-          ["hero_button", config.hero_button || defaultConfig.hero_button],
+          ["page_title", config.page_title || defaultConfig.page_title],
+          ["hero_heading", config.hero_heading || defaultConfig.hero_heading],
+          ["hero_subheading", config.hero_subheading || defaultConfig.hero_subheading],
+          ["progress_title", config.progress_title || defaultConfig.progress_title],
           ["form_title", config.form_title || defaultConfig.form_title],
-          ["form_button", config.form_button || defaultConfig.form_button],
-          ["impact_title", config.impact_title || defaultConfig.impact_title],
-          ["impact_description", config.impact_description || defaultConfig.impact_description]
+          ["button_text", config.button_text || defaultConfig.button_text]
         ])
       });
     }
 
-    // Progress Bar Animation
-    const raisedAmount = 68450; // Current donations
-    const goalAmount = 100000;
-    const percentage = (raisedAmount / goalAmount) * 100;
+    // Progress bar animation - simulates current donations
+    const raised = 32750; // Current amount raised
+    const goal = 50000;
+    const percentage = (raised / goal) * 100;
 
     window.addEventListener('load', () => {
-      const progressFill = document.getElementById('progress-fill');
-      const progressPercent = document.getElementById('progress-percent');
-      const currentRaised = document.getElementById('current-raised');
+      const progressBar = document.getElementById('progressBar');
+      const progressPercent = document.getElementById('progressPercent');
+      const raisedAmount = document.getElementById('raisedAmount');
 
       // Animate progress bar
       setTimeout(() => {
-        progressFill.style.width = percentage + '%';
+        progressBar.style.width = percentage + '%';
         progressPercent.textContent = Math.round(percentage) + '%';
       }, 300);
 
-      // Animate raised amount
-      let current = 0;
-      const increment = raisedAmount / 60;
+      // Update raised amount with animation
+      let currentAmount = 0;
+      const increment = raised / 60;
       const timer = setInterval(() => {
-        current += increment;
-        if (current >= raisedAmount) {
-          current = raisedAmount;
+        currentAmount += increment;
+        if (currentAmount >= raised) {
+          currentAmount = raised;
           clearInterval(timer);
         }
-        currentRaised.textContent = '$' + Math.round(current).toLocaleString();
+        raisedAmount.textContent = '$' + Math.round(currentAmount).toLocaleString();
       }, 20);
     });
 
-    // Amount Selection
-    const amountOptions = document.querySelectorAll('.amount-option');
+    // Amount button selection
+    const amountButtons = document.querySelectorAll('.amount-btn');
     const customAmountInput = document.getElementById('custom-amount');
 
-    amountOptions.forEach(option => {
-      option.addEventListener('click', () => {
-        // Remove active class from all options
-        amountOptions.forEach(opt => opt.classList.remove('active'));
+    amountButtons.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
         
-        // Add active class to clicked option
-        option.classList.add('active');
+        // Remove active class from all buttons
+        amountButtons.forEach(b => b.classList.remove('active'));
         
-        // Set custom amount input
-        const amount = option.getAttribute('data-amount');
+        // Add active class to clicked button
+        btn.classList.add('active');
+        
+        // Set the custom amount input value
+        const amount = btn.getAttribute('data-amount');
         customAmountInput.value = amount;
         
-        // Clear errors
-        document.getElementById('amount-error').classList.remove('show');
+        // Clear any error
+        document.getElementById('amountError').classList.remove('show');
         customAmountInput.classList.remove('error');
       });
     });
 
-    // Clear selection when typing custom amount
+    // Clear button selection when user types custom amount
     customAmountInput.addEventListener('input', () => {
-      amountOptions.forEach(opt => opt.classList.remove('active'));
+      amountButtons.forEach(b => b.classList.remove('active'));
     });
 
-    // Form Validation and Submission
-    const form = document.getElementById('donation-form-element');
-    const nameInput = document.getElementById('donor-name');
-    const emailInput = document.getElementById('donor-email');
-    const submitBtn = document.getElementById('submit-btn');
-    const successMsg = document.getElementById('success-msg');
+    // Form validation and submission
+    const form = document.getElementById('donationForm');
+    const nameInput = document.getElementById('name');
+    const emailInput = document.getElementById('email');
+    const submitBtn = document.getElementById('submitBtn');
+    const successMessage = document.getElementById('successMessage');
 
     form.addEventListener('submit', (e) => {
       e.preventDefault();
       
-      // Reset errors
+      // Reset all errors
       document.querySelectorAll('.error-message').forEach(msg => msg.classList.remove('show'));
       document.querySelectorAll('.form-input').forEach(input => input.classList.remove('error'));
       
       let isValid = true;
 
       // Validate amount
-      if (!customAmountInput.value || parseFloat(customAmountInput.value) <= 0) {
-        document.getElementById('amount-error').classList.add('show');
+      if (!customAmountInput.value || customAmountInput.value <= 0) {
+        document.getElementById('amountError').classList.add('show');
         customAmountInput.classList.add('error');
         isValid = false;
       }
 
       // Validate name
-      if (!nameInput.value.trim() || nameInput.value.trim().length < 2) {
-        document.getElementById('name-error').classList.add('show');
+      if (!nameInput.value.trim()) {
+        document.getElementById('nameError').classList.add('show');
         nameInput.classList.add('error');
         isValid = false;
       }
@@ -948,37 +710,28 @@
       // Validate email
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!emailInput.value.trim() || !emailRegex.test(emailInput.value)) {
-        document.getElementById('email-error').classList.add('show');
+        document.getElementById('emailError').classList.add('show');
         emailInput.classList.add('error');
         isValid = false;
       }
 
       if (isValid) {
-        // Disable button and show processing
+        // Disable submit button
         submitBtn.disabled = true;
-        const buttonText = document.getElementById('form-button');
-        const originalText = buttonText.textContent;
-        buttonText.textContent = 'Processing...';
+        submitBtn.innerHTML = '<span>Processing...</span>';
 
-        // Simulate form processing
+        // Simulate processing
         setTimeout(() => {
           // Hide form and show success message
           form.style.display = 'none';
-          successMsg.classList.add('show');
+          successMessage.classList.add('show');
           
-          // Reset button
+          // Re-enable button (in case user wants to refresh)
           submitBtn.disabled = false;
-          buttonText.textContent = originalText;
+          submitBtn.innerHTML = `<span>${window.elementSdk ? window.elementSdk.config.button_text || defaultConfig.button_text : defaultConfig.button_text}</span><svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"/></svg>`;
         }, 1500);
       }
     });
-
-    // Smooth scroll for hero button
-    document.getElementById('hero-button').addEventListener('click', (e) => {
-      e.preventDefault();
-      const donationSection = document.getElementById('donation-form');
-      donationSection.scrollIntoView({ behavior: 'smooth' });
-    });
   </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9afebb82715844c2',t:'MTc2NjA2MTY2NS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9b0046d5d1ad1b3e',t:'MTc2NjA3Nzg1OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
