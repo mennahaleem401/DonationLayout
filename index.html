@@ -324,14 +324,19 @@
     .hero-container {
       max-width: 1200px;
       margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
       align-items: center;
+      gap: 3rem;
+      text-align: center;
     }
 
     .hero-content {
       z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     .hero-title {
@@ -986,7 +991,9 @@
      <div class="hero-content">
       <h1 class="hero-title" id="hero-title">Donation Landing Page</h1>
       <p class="hero-subtitle" id="hero-subtitle">Together We Can Make a Change</p>
-      <p class="hero-description" id="hero-description">Join thousands of supporters who are making a real difference in communities around the world. Your generosity brings hope and creates lasting impact.</p><a href="#donation-form" class="hero-button" id="hero-button">Donate Now</a>
+      <p class="hero-description" id="hero-description">Join thousands of supporters who are making a real difference in communities around the world.</p>
+      <p class="hero-description" id="hero-description">Your generosity brings hope and creates lasting impact.</p>
+      <a href="#donation-form" class="hero-button" id="hero-button">Donate Now</a>
      </div>
     </div>
    </section><!-- Donation Section -->
